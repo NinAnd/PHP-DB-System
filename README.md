@@ -18,6 +18,13 @@ values (?, ?, ?, ?, ?)';
 	$stmt = $link->prepare($sql); 
 	$stmt->bind_param('ssisi', $cname, $ccn, $ccph, $cad, $zip);
 	$stmt->execute();
+		if ($stmt->affected_rows >0 ){
+	echo 'Kunden er nu tilføjet kundekartoteket.<br><br>
+	Tilbage til <a href="clientlist.php">Kunder</a><br><br>';
+	}
+	else {
+	echo 'Der opstod en fejl.';
+	}
 
 	echo 'inserted '.$cname.' as id:'.($stmt->insert_id); // id for inserted record
 ?>
