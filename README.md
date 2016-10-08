@@ -16,9 +16,10 @@ $sql = "UPDATE client SET Client_Adress=?, Zipcode_Zipcode=?
 	$stmt->bind_param('sis', $cad, $zip, $cid);
 	$stmt->execute();
 	if ($stmt->affected_rows >0 ){
-	echo 'Kundeoplysninger er ændret';
+	echo 'Kundeoplysningerne er ændret.<br><br>
+	Tilbage til <a href="clientlist.php">Kunder</a><br><br>';
 	}
 	else {
-	echo 'Der opstod en fejl';
+	echo 'Der opstod en fejl i forsøget på at ændre kundeoplysningerne. Prøv igen.';
 	}
 ?>
