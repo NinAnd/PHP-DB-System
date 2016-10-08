@@ -10,19 +10,23 @@ require_once 'dbcon.php'; // Opret forbindelse til databasen
 <meta charset="UTF-8">
 <title>Tilføj ny kunde</title>
 <style>
-body {font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;}
+body 	{font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+		 font-size: 18px;}
+input {height: 30px; font-size: 14px; margin-bottom: 5px;}
+input[type=submit] {background-color: #7fcec9; width: 90px; font-size: 14px;}
+select {height: 30px; font-size: 14px; margin-bottom: 20px; width: 167px;}
 </style>
 </head>
 
 <body>
 <!-- Links til de andre sider -->
-Tilbage til <a href="index.php">forsiden</a> | Tilbage til <a href="clientlist.php">Kunder</a><br><br>
+Tilbage til <a href="index.php">forsiden</a> // Tilbage til <a href="clientlist.php">Kunder</a><br><br>
 	<!-- 'form action' henter informationerne (bl.a. SQL statement 'INSERT INTO') 
     fra filen addclient_action.php, der gør det muligt at tilføje en ny kunde til tabellen -->
     <form action="addclient_action.php" method="POST">
 		<fieldset>
         	<legend>Tilføj ny kunde</legend>
-            <input type="text" placeholder="Navn" name="cname"><br>
+            <input type="text" placeholder="Kundenavn/virksomhed" name="cname"><br>
             <input type="text" placeholder="Kontaktperson" name="ccn"><br>
             <input type="text" placeholder="Telefonnummer" name="ccph"><br>
             <input type="text" placeholder="Adresse" name="cad"><br>
