@@ -7,15 +7,16 @@ require_once 'dbcon.php'; // Opret forbindelse til databasen
 $cname = filter_input(INPUT_POST, 'cname') or die('noget gik galt');
 // sletter alle data tilknyttet et specifikt 'Client_Name'
 $sql = 'DELETE FROM client 
-		WHERE Client_Name=?';
+		WHERE Client_ID=?';
 
 	$stmt = $link->prepare($sql); 
 	$stmt->bind_param('s', $cname);
 	$stmt->execute();
 	if ($stmt->affected_rows >0 ){
-	echo 'Kunde er slettet';
+	echo 'Kunden er nu slettet.<br><br>
+	Tilbage til <a href="clientlist.php">Kunder</a><br><br>';
 	}
 	else {
-	echo 'Der opstod en fejl';
-}
+	echo 'Der opstod en fejl under sletningen af kunden. Prøv igen.';
+	}
 ?>
