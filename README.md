@@ -1,57 +1,59 @@
 # PHP-DB-System
 Semester 3: Modul 2, opgave 3.
 
-<?php
-require_once 'dbcon.php'; // Opret forbindelse til databasen
-?>
 <!doctype html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Ændring i kundeoplysninger</title>
+<meta charset="utf-8">
+<title>Projekter</title>
 <style>
-body {font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;}
+body {font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+	  font-size: 18px;}
+table, tr, td, th {border: 1px solid black;}
+td, th {padding: 10px;}
+th {background-color: #7fcec9;}
+td {background-color: #f0f2f2;}
 </style>
 </head>
 
 <body>
-Tilbage til <a href="index.php">forsiden</a> | Tilbage til <a href="clientlist.php">Kunder</a><br><br>
-    <!-- 'form action' henter informationerne (bl.a. SQL statement 'UPDATE') 
-    fra filen updateclient_action.php, der gør det muligt at ændre kundeoplysninger i tabellen -->
-    <form action="updateclient_action.php" method="POST">
-		<fieldset>
-        	<legend>Lav ændringer i kundeoplysninger</legend>
-            <!-- Alle kunder der findes i tabellen 'client' hentes i en dropdown -->
-            <select type="text" placeholder="Kunde" name="cid">
-				<option value="">Kunde</option>
-				<?php
-					$sql = 'select Client_ID, Client_Name 
-							from client';
-					$stmt = $link->prepare($sql);
-					$stmt->bind_result($cid, $cname);
-					$stmt->execute();
-					while ($stmt->fetch()) {
-					echo '	<option value="'.$cid.'">'.$cname.'</option>'.PHP_EOL;
-					}
-                ?>
-            </select><br>
-            <input type="text" placeholder="Adresse" name="cad"><br>
-            <!-- Alle postnumre der findes i tabellen 'zipcode' hentes i en dropdown -->
-            <select type="text" placeholder="Postnummer" name="zip">
-				<option value="">Vælg postnr.</option>
-				<?php
-					$sql = 'select Zipcode FROM zipcode';
-					$stmt = $link->prepare($sql);
-					$stmt->bind_result($zip);
-					$stmt->execute();
-					while ($stmt->fetch()) {
-					echo '	<option value="'.$zip.'">'.$zip.'</option>'.PHP_EOL;
-					}
-                ?>
-            </select><br>
-            <input type="submit" value="Tilføj ændring">
-		</fieldset>
-	</form>
 
+Tilbage til <a href="index.php">forsiden</a> // Se også <a href="clientlist.php">Kunder</a>
+<h1>Projekter</h1>
+<!-- Tabelstart -->
+<table>
+<thead>
+	<tr>
+    	<!-- Tabeloverskrifter -->
+		<th>ID</th>
+		<th>Projekt</th>
+		<th>Beskrivelse</th>
+		<th>I øvrigt</th>
+        	<th>Startdato</th>
+		<th>Slutdato</th>
+        <th>Kunde</th>
+        <th>Resource</th>
+</thead>
+<?php
+	require_once 'dbcon.php'; // Opret forbindelse til databasen
+	// data hentes fra 'project' tabellen i databasen
+	$sql = 'select Project_ID, Project_Name, Project_Description, Other_Project_Details, 
+	Project_Startdate, Project_Enddate, Client_Name, Resource_Name
+	FROM project, client, resource
+	WHERE Project_ID = Client_ID
+	AND Resource_ID = 10';
+	$stmt = $link->prepare($sql);
+	$stmt->execute();
+	$stmt->bind_result($pid, $pname, $pd, $opd, $pstart, $pend, $cname, $rname);
+	while($stmt->fetch()){
+	// data skrives ud i en tabel
+		echo '<tr><td>' .$pid. '</td><td>' .$pname. '</td>
+		<td>' .$pd. '</td><td>' .$opd. '</td><td>' .$pstart. '</td>
+		<td>' .$pend. '</td><td><a href="clientlist.php">' .$cname. '</a></td>
+		<td><a href="resourcelist.php">' .$rname. '</a></td></tr>';
+	}
+?>
+</table>
+<!-- Tabelslut -->
 </body>
 </html>
