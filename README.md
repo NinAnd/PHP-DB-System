@@ -10,12 +10,16 @@ require_once 'dbcon.php'; // Opret forbindelse til databasen
 <meta charset="UTF-8">
 <title>Ændring i kundeoplysninger</title>
 <style>
-body {font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;}
+body {font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+	  font-size: 18px;}
+input {height: 30px; font-size: 14px; margin-bottom: 5px;}
+select {height: 30px; font-size: 14px; margin-bottom: 5px; width: 167px;}
+input[type=submit] {background-color: #7fcec9; width: 100px; margin-top: 15px;}
 </style>
 </head>
 
 <body>
-Tilbage til <a href="index.php">forsiden</a> | Tilbage til <a href="clientlist.php">Kunder</a><br><br>
+Tilbage til <a href="index.php">forsiden</a> // Tilbage til <a href="clientlist.php">Kunder</a><br><br>
     <!-- 'form action' henter informationerne (bl.a. SQL statement 'UPDATE') 
     fra filen updateclient_action.php, der gør det muligt at ændre kundeoplysninger i tabellen -->
     <form action="updateclient_action.php" method="POST">
