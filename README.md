@@ -7,21 +7,18 @@ Semester 3: Modul 2, opgave 3.
 <meta charset="utf-8">
 <title>Ressourcer</title>
 <style>
-body {font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;}
-
+body {font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+	  font-size: 18px;}
 table, tr, td, th {border: 1px solid black;}
-
 td, th {padding: 10px;}
-
-th {background-color: #BDBDBD;}
-
+th {background-color: #7fcec9;}
 td {background-color: #f0f2f2;}
 </style>
 </head>
 
 <body>
 
-Tilbage til <a href="index.php">forsiden</a> | Tilbage til <a href="projectlist.php">projekter</a>
+Tilbage til <a href="index.php">forsiden</a> // Tilbage til <a href="projectlist.php">projekter</a>
 <h1>Ressourcer</h1>
 <!-- Tabelstart -->
 <table>
