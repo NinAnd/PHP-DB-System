@@ -7,20 +7,20 @@ Semester 3: Modul 2, opgave 3.
 <meta charset="utf-8">
 <title>Kunder</title>
 <style>
-body {font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;}
+body 	{font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+		 font-size: 18px;}
 table, tr, td, th {border: 1px solid black;}
-
 td, th {padding: 10px;}
-
-th {background-color: #BDBDBD;}
-
+th {background-color: #7fcec9;}
+input[type=submit] {background-color: #7fcec9; height: 30px; width: 50px; font-size: 14px;}
+select {height: 30px; font-size: 14px;}
 td {background-color: #f0f2f2;}
 </style>
 </head>
 
 <body>
-Tilbage til <a href="index.php">forsiden</a> | Se også <a href="projectlist.php">Projekter</a> |
-<a href="addclient.php">Opret kunde</a> | <a href="updateclient.php">Opdater kunde</a><br>
+Tilbage til <a href="index.php">forsiden</a> // Se også <a href="projectlist.php">Projekter</a> //
+<a href="addclient.php">Opret kunde</a> // <a href="updateclient.php">Opdater kunde</a><br>
 <h1>Kunder</h1>
 <!-- Tabelstart -->
 <table>
@@ -59,7 +59,7 @@ Tilbage til <a href="index.php">forsiden</a> | Se også <a href="projectlist.php
 	<form action="deleteclient_action.php" method="POST">
              <!-- Alle kundenavne der findes i tabellen 'client' hentes i en dropdown -->
             <select type="text" placeholder="Kunde" name="cname">
-				<option value="">Kundenavn</option>
+				<option value="select">Kundenavn</option>
 				<?php
 					$sql = 'select Client_ID, Client_Name 
 							from client
